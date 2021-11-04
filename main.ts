@@ -5,17 +5,6 @@ import { Round } from './Klassen/round.js';
 //const readline = require("readline")
 //const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
-
-//=======================================================================================
-//                              gamefield with first random Stone
-//=======================================================================================
-/*
-export function gamefield() {
-  const firststone = Math.floor(Math.random() * pool.length);
-  gameArea.push(pool[firststone]);
-  pool.splice(firststone, 1);
-  return gameArea
-}*/
 //=======================================================================================
 //                                    Domino Game Round up
 //=======================================================================================
