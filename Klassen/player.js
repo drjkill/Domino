@@ -1,8 +1,9 @@
 export class Player {
-    constructor(playerName) {
+    constructor(playerName, points) {
         this.points = 0;
         this.deck = [];
         this.playerName = playerName;
+        this.points = points;
         return this;
     }
     getPlayerName() {
@@ -11,7 +12,11 @@ export class Player {
     getplayer() {
         return { playerName: this.playerName, points: this.points };
     }
+    setDeck(deck) {
+        this.deck = deck;
+    }
     getDeck() {
+        return this.deck;
     }
     reciveStone() {
     }
@@ -21,3 +26,4 @@ export class Player {
         return this.points += point;
     }
 }
+

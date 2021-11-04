@@ -4,10 +4,10 @@ export class Game {
     constructor(roundNumber) {
         this.rounds = [];
         this.players = [];
-        this.addPlayer(new Player("p1"));
-        this.addPlayer(new Player("p2"));
-        this.addPlayer(new Player("c1"));
-        this.addPlayer(new Player("c2"));
+        this.addPlayer(new Player("p1", 3));
+        this.addPlayer(new Player("p2", 5));
+        this.addPlayer(new Player("c1", 0));
+        this.addPlayer(new Player("c2", 2));
         for (let i = 1; i <= roundNumber; i++) {
             const round = new Round();
             this.rounds.push(round);
@@ -18,5 +18,9 @@ export class Game {
         return player;
     }
     getWinner() {
+        let best = this.players.sort(function (a, b) {
+            return a.points - b.points;
+        });
+        console.log("Winner: " + best[0].playerName + "  Points: " + best[0].points);
     }
 }

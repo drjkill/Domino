@@ -1,6 +1,7 @@
 import { Stone } from '../Interface/stone';
 import { IPlayer } from "../Interface/IPLayer";
-import { Pool }  from "./pool.js";
+import { Round } from "./round.js";
+import { Pool } from './pool';
 //=================================================================================================
 
 export class Player implements IPlayer{
@@ -8,8 +9,9 @@ export class Player implements IPlayer{
     playerName:string
     deck: Array<Stone> = [];
 
-    constructor(playerName:string) {
-        this.playerName = playerName    
+    constructor(playerName:string,points:number) {
+        this.playerName = playerName 
+        this.points = points           
         return this;
     }
     getPlayerName(){
@@ -18,7 +20,11 @@ export class Player implements IPlayer{
     getplayer(): IPlayer {
         return <IPlayer>{ playerName: this.playerName, points: this.points }
     }
+    setDeck(deck:Stone[]){
+        this.deck = deck
+    }
     getDeck(){
+        return this.deck
 
     }
     reciveStone(){
@@ -32,4 +38,5 @@ export class Player implements IPlayer{
     }
 }
 
-
+const player = new Player("",1)
+console.log(player.deck)
