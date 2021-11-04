@@ -1,7 +1,9 @@
 import { Pool } from "./pool.js";
 import { Player } from "./player.js";
+import { Stone } from "../Interface/stone.js";
 
 export class Round {
+    gameArea: Array<Stone> = []
     players: Array<Player> = []
     pool: Pool;
     winner!: Player;
@@ -12,13 +14,24 @@ export class Round {
         this.addPlayer(new Player("c2",4))
         const pool = new Pool()
         this.pool = pool
-        this.setUp()
+        this.setUpDeck()
+        this.setUpGameField()
        
     }
-    setUp(){
+    setUpDeck(){
         this.players.forEach(player =>{
             player.setDeck(this.pool.getDeck())
         })
+    }
+    setUpGameField(){
+        this.setGameArea(this.pool.getGameArea())
+    }
+    setGameArea(gameArea:Stone[]){
+        this.gameArea = gameArea
+    }
+    getGameArea(){
+        return this.gameArea
+
     }
     getPool(): Pool {
         return this.pool;

@@ -5,18 +5,7 @@ import { Round } from './Klassen/round.js';
 //const readline = require("readline")
 //const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
-//=======================================================================================
-//                              player gets 5 Stones
-//=======================================================================================
-/*export function player() {
-  const deck = []
-  for (let i = 0; i <= 4; i++) {
-    const stone = Math.floor(Math.random() * pool.length);
-    deck.push(pool[stone]);
-    pool.splice(stone, 1);
-  }
-  return deck
-}*/
+
 //=======================================================================================
 //                              gamefield with first random Stone
 //=======================================================================================
