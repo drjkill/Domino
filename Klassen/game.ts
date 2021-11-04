@@ -1,5 +1,5 @@
 import { Stone } from "../Interface/stone.js";
-import { Pool } from "./Dominopool.js";
+import { Pool } from "./pool.js";
 import { Player } from "./player.js";
 import { Round } from "./round.js";
 

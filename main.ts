@@ -1,4 +1,4 @@
-import { Pool} from './Klassen/Dominopool.js';
+import { Pool} from './Klassen/pool.js';
 import { Player} from './Klassen/player.js';
 import { Game } from './Klassen/game.js';
 import { Round } from './Klassen/round.js';

@@ -1,4 +1,4 @@
-import { Pool } from "./Dominopool.js";
+import { Pool } from "./pool.js";
 import { Player } from "./player.js";
 export class Round {
     constructor() {

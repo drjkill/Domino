@@ -1,6 +1,6 @@
 import { Stone } from '../Interface/stone';
 import { IPlayer } from "../Interface/IPLayer";
-import { Pool }  from "./Dominopool.js";
+import { Pool }  from "./pool.js";
 //=================================================================================================
 
 export class Player implements IPlayer{
