@@ -21,7 +21,14 @@ export class Pool {
             deck.push(this.pool[stone]);
             this.pool.splice(stone, 1);
         }
-        return deck    //console.table(this.pool) ;
+        return deck    
+    }
+    getGameArea(){
+        const gameArea = []
+        const stone = Math.floor(Math.random() * this.pool.length);
+        gameArea.push(this.pool[stone]);
+        this.pool.splice(stone, 1);
+        return gameArea
     }
 
     getStones() {

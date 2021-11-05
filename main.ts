@@ -6,28 +6,6 @@ import { Round } from './Klassen/round.js';
 //const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
 //=======================================================================================
-//                              player gets 5 Stones
-//=======================================================================================
-/*export function player() {
-  const deck = []
-  for (let i = 0; i <= 4; i++) {
-    const stone = Math.floor(Math.random() * pool.length);
-    deck.push(pool[stone]);
-    pool.splice(stone, 1);
-  }
-  return deck
-}*/
-//=======================================================================================
-//                              gamefield with first random Stone
-//=======================================================================================
-/*
-export function gamefield() {
-  const firststone = Math.floor(Math.random() * pool.length);
-  gameArea.push(pool[firststone]);
-  pool.splice(firststone, 1);
-  return gameArea
-}*/
-//=======================================================================================
 //                                    Domino Game Round up
 //=======================================================================================
 /*export function roundUp() {
