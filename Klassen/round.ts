@@ -30,6 +30,7 @@ export class Round {
         this.gameArea = gameArea
     }
     getGameArea(){
+        console.table(this.gameArea)
         return this.gameArea
 
     }
