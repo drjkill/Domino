@@ -17,6 +17,13 @@ export class Pool {
         }
         return deck;
     }
+    getGameArea() {
+        const gameArea = [];
+        const stone = Math.floor(Math.random() * this.pool.length);
+        gameArea.push(this.pool[stone]);
+        this.pool.splice(stone, 1);
+        return gameArea;
+    }
     getStones() {
         for (let i = 0; i < this.pool.length; i++) {
             console.log("[ " + this.pool[i].leftSide + " | " + this.pool[i].rightSide + " ]");
