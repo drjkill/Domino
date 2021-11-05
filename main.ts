@@ -6,7 +6,7 @@ import { Round } from './Klassen/round.js';
 //const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
 //=======================================================================================
-//                                    Domino Game Round up
+//                                     Domino Game Round up
 //=======================================================================================
 /*export function roundUp() {
   rl.question('noch eine Runde? ', (answer: string) => {
