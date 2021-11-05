@@ -11,14 +11,14 @@ export class Round {
         const pool = new Pool();
         this.pool = pool;
         this.setUpDeck();
-        this.setUpGameField();
+        this.setUpGameArea();
     }
     setUpDeck() {
         this.players.forEach(player => {
             player.setDeck(this.pool.getDeck());
         });
     }
-    setUpGameField() {
+    setUpGameArea() {
         this.setGameArea(this.pool.getGameArea());
     }
     setGameArea(gameArea) {

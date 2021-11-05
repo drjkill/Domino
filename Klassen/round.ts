@@ -15,7 +15,7 @@ export class Round {
         const pool = new Pool()
         this.pool = pool
         this.setUpDeck()
-        this.setUpGameField()
+        this.setUpGameArea()
        
     }
     setUpDeck(){
@@ -23,7 +23,7 @@ export class Round {
             player.setDeck(this.pool.getDeck())
         })
     }
-    setUpGameField(){
+    setUpGameArea(){
         this.setGameArea(this.pool.getGameArea())
     }
     setGameArea(gameArea:Stone[]){
