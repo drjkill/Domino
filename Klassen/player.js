@@ -26,4 +26,5 @@ export class Player {
         return this.points += point;
     }
 }
-
+const player = new Player("", 1);
+console.log(player.deck);
