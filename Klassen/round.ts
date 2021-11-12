@@ -32,14 +32,8 @@ export class Round {
     setGameArea(gameArea: Stone[]): void {
         this.gameArea = gameArea
     }
-<<<<<<< HEAD
-    getGameArea() {
-=======
     getGameArea(){
-        console.table(this.gameArea)
->>>>>>> b9f652aa25f9c9f56c0d3ec0308766058f58f496
         return this.gameArea
-
     }
     getPool(): Pool {
         return this.pool;
