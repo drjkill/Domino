@@ -45,7 +45,7 @@ export class Player implements IPlayer {
 //=================================================================================================
 
 const player = new Player("Testplayer", 1)
-//console.log(player)
+console.log(player)
 //console.log(player.getplayer())
 //console.log(player.getplayerDeck())
 //console.log(player.playStone())
