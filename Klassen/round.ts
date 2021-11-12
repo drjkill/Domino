@@ -85,7 +85,7 @@ const round = new Round()
 //console.log(round.setUpGameArea())
 //console.log(round.getGameArea())
 //console.log(round.getPool())
-console.log(round.play())
+//console.log(round.play())
 //console.log(round.getWinner())
 
 
