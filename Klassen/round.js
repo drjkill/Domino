@@ -4,6 +4,7 @@ export class Round {
     constructor() {
         this.gameArea = [];
         this.players = [];
+        this.deck = [];
         this.addPlayer(new Player("p1", 1));
         this.addPlayer(new Player("p2", 2));
         this.addPlayer(new Player("c1", 3));
@@ -15,7 +16,7 @@ export class Round {
     }
     setUpDeck() {
         this.players.forEach(player => {
-            player.setDeck(this.pool.getDeck());
+            player.setPlayerDeck(this.pool.getPlayerDeck());
         });
     }
     setUpGameArea() {
@@ -34,6 +35,31 @@ export class Round {
         this.players.push(player);
         return player;
     }
+    play() {
+        this.players.forEach(player => {
+            console.log(player.playerDeck);
+            if (player.playerDeck.length > 0) {
+                const action = this.deck.forEach(stone => {
+                    if (stone.rightSide === this.gameArea[0].leftSide) {
+                        console.log(stone);
+                    }
+                    else if (stone.leftSide == this.gameArea[this.gameArea.length - 1].rightSide) {
+                    }
+                    else {
+                        if (this.pool.pool.length > 0) {
+                        }
+                        else {
+                            console.log("Pool is empty!!");
+                        }
+                    }
+                });
+                return action;
+            }
+            else {
+                console.log(player.playerName + "Wins!");
+            }
+        });
+    }
     getWinner() {
         let best = this.players.sort(function (a, b) {
             return a.points - b.points;
@@ -41,3 +67,5 @@ export class Round {
         console.log("Winner: " + best[0].playerName + "  Points: " + best[0].points);
     }
 }
+const round = new Round();
+console.log(round.play());

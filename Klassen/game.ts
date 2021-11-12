@@ -1,6 +1,7 @@
 import { Player } from "./player.js";
 import { Round } from "./round.js";
 
+//=================================================================================================
 
 export class Game {
     rounds:Array<Round> = []
@@ -27,3 +28,17 @@ export class Game {
     }
             
 } 
+
+//=================================================================================================
+
+
+//const game = new Game(1);
+//console.log("Game-Round")
+//console.table(game.rounds);
+//console.table(game.rounds[0]);
+//console.log("Game-Area")
+//console.table(game.rounds[0].gameArea);
+//console.log("Game-Players")
+//console.table(game.rounds[0].players);
+//console.log("Round-Pool")
+//console.table(game.rounds[0].pool.showStones());

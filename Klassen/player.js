@@ -1,30 +1,32 @@
 export class Player {
     constructor(playerName, points) {
         this.points = 0;
-        this.deck = [];
+        this.playerDeck = [];
         this.playerName = playerName;
         this.points = points;
         return this;
     }
-    getPlayerName() {
-        return this.playerName;
-    }
     getplayer() {
         return { playerName: this.playerName, points: this.points };
     }
-    setDeck(deck) {
-        this.deck = deck;
+    setPlayerDeck(playerDeck) {
+        this.playerDeck = playerDeck;
     }
-    getDeck() {
-        return this.deck;
+    getPlayerDeck() {
+        return this.playerDeck;
     }
-    reciveStone() {
-    }
-    dropStone() {
+    playStone() {
+        const action = this.playerDeck.forEach(stone => {
+            while (this.playerDeck.length > 0) {
+                console.table(this.playerDeck);
+                this.playerDeck.splice(0, 1);
+                console.log(this.playerName + "drop Stone!");
+            }
+        });
+        return action;
     }
     addPoints(point) {
         return this.points += point;
     }
 }
-const player = new Player("", 1);
-console.log(player.deck);
+const player = new Player("Testplayer", 1);

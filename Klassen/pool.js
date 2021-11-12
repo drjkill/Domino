@@ -3,19 +3,22 @@ export class Pool {
         this.pool = [];
         for (this.leftSide = 0; this.leftSide <= 4; this.leftSide++) {
             for (this.rightSide = 0; this.rightSide <= 4; this.rightSide++) {
-                let stone = { leftSide: this.leftSide, rightSide: this.rightSide };
+                const stone = { leftSide: this.leftSide, rightSide: this.rightSide };
                 this.pool.push(stone);
             }
         }
+        this.pool.forEach(stone => {
+            console.table("[ " + stone.leftSide + " | " + stone.rightSide + " ]");
+        });
     }
-    getDeck() {
-        const deck = [];
+    getPlayerDeck() {
+        const playerDeck = [];
         for (let i = 0; i <= 4; i++) {
             const stone = Math.floor(Math.random() * this.pool.length);
-            deck.push(this.pool[stone]);
+            playerDeck.push(this.pool[stone]);
             this.pool.splice(stone, 1);
         }
-        return deck;
+        return playerDeck;
     }
     getGameArea() {
         const gameArea = [];
@@ -24,11 +27,21 @@ export class Pool {
         this.pool.splice(stone, 1);
         return gameArea;
     }
-    getStones() {
-        for (let i = 0; i < this.pool.length; i++) {
-            console.log("[ " + this.pool[i].leftSide + " | " + this.pool[i].rightSide + " ]");
-        }
+    getStonePoints() {
+        this.pool.forEach(stone => {
+            const points = stone.leftSide + stone.rightSide;
+            const stonePoint = console.log(points);
+            return stonePoint;
+        });
+    }
+    showStones() {
+        this.pool.forEach(stone => {
+            console.log("[ " + stone.leftSide + " | " + stone.rightSide + " ]");
+        });
     }
 }
 const pool = new Pool();
-console.log(pool.getDeck());
+console.log(pool);
+console.log(pool.getPlayerDeck());
+console.log(pool.getGameArea());
+console.log(pool.showStones());
