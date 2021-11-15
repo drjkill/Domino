@@ -10,11 +10,8 @@ export class Round {
     pool: Pool;
     deck: Array<Stone> = []
     winner!: Player;
-    constructor() {
-        this.addPlayer(new Player("p1", 1))
-        this.addPlayer(new Player("p2", 2))
-        this.addPlayer(new Player("c1", 3))
-        this.addPlayer(new Player("c2", 4))
+    constructor(players: Player[]) {
+        this.players = players
         const pool = new Pool()
         this.pool = pool
         this.setUpDeck()
@@ -32,7 +29,7 @@ export class Round {
     setGameArea(gameArea: Stone[]): void {
         this.gameArea = gameArea
     }
-    getGameArea(){
+    getGameArea() {
         return this.gameArea
     }
     getPool(): Pool {
@@ -42,31 +39,50 @@ export class Round {
         this.players.push(player)
         return player
     }
-    play() {
+    hasRoundEndet(): boolean {
+        this.players.forEach(player => {
+            if (player.isDeckEmpty()) {
+                return true;
+            }
+        }); 
+        return false
+    }
+    play(): Player[] {
+
+        /**
+         * wenn (runde nicht zuende ist)
+         * spieler macht zug (action)
+         */
+
+
+
 
         this.players.forEach(player => {
-            console.log(player.playerDeck)
-            if (player.playerDeck.length > 0) {
-                const action = this.deck.forEach(stone => {                    
-                    if (stone.rightSide === this.gameArea[0].leftSide) {
-                        console.log(stone)
+            const action = player.playerDeck.forEach((stone, index) => {
+                if (player.playerDeck.length > 0) {
+                    if (stone.rightSide == this.gameArea[0].leftSide) {
+                        this.gameArea.unshift(stone);
+                        player.playerDeck.splice(index, 1);
                     }
                     else if (stone.leftSide == this.gameArea[this.gameArea.length - 1].rightSide) {
-
+                        this.gameArea.push();
+                        player.playerDeck.splice(index, 1);
                     }
                     else {
                         if (this.pool.pool.length > 0) {
-
-                        } else {
-                            console.log("Pool is empty!!")
+                            player.playerDeck.push(this.pool.pool[0]);
+                            this.pool.pool.splice(0, 1);
+                        }
+                        else {
+                            console.log("Pool is empty!!");
                         }
                     }
-                }); return action
-            }
-            else {
-                console.log(player.playerName + "Wins!")
-            }
-        })
+                }
+                else {
+                    console.log(player.playerName + "Wins!");
+                }
+            });
+        }); return this.players
     }
     getWinner(): void {
         let best = this.players.sort(function (a: Player, b: Player) {
@@ -78,39 +94,13 @@ export class Round {
 
 //=================================================================================================
 
-const round = new Round()
+//const round = new Round()
 //console.log(round)
 //console.log(round.setUpDeck())
 //console.log(round.setUpGameArea())
 //console.log(round.getGameArea())
 //console.log(round.getPool())
-//console.log(round.play())
+//console.table(round.play())
 //console.log(round.getWinner())
 
 
-/**
- *     play() :void{
-        this.players.forEach(player => {                                // für jeden player in players....
-            const action = player.deck.forEach(stone => {               // ... aktion = für jeden Stein in player.deck
-                if (player.deck.length != null) {                       // wenn das deck nicht leer ist
-                    if (stone.rightSide == this.gameArea[stone].leftSide) { // wenn die rechte seite vom Player-Stein den gleichen Wert hat wie die linke seite vom Spielfeld-Stein
-                        this.gameArea.unshift(player.deck[stone])       // füge links den Stein auf position 0 ein und...
-                        player.deck.splice(stone, 1)                    // ...entferne Stein aus player.deck
-                    } else if (stone.leftSide == this.gameArea[this.gameArea.length - 1].rightSide) { //sonst wenn die linke seite vom Player-Stein den gleichen Wert hat wie die rechte seite vom Spielfeld-Stein
-                        this.gameArea.push()                            // füge rechts den Stein als letzten im Array ein
-                        player.deck.splice(stone,1)                     // entferne Stein aus player.deck
-                    } else {                                            // sonst
-                        if (this.pool.pool.length != null) {            // wenn der pool noch nicht leer ist
-                            player.deck.push(this.pool.pool[stone])         // füge den ersten stein aus pool in player.deck ein und...
-                            this.pool.splice(stone, 1)                  // ...entferne Stein aus pool
-                        } else {
-                            console.log("Pool is empty!!")
-                        }
-                    }
-                }else {
-                    console.log(player + "Wins!")
-                }
-            })
-        })
-    }
- */

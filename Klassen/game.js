@@ -9,7 +9,7 @@ export class Game {
         this.addPlayer(new Player("c1", 0));
         this.addPlayer(new Player("c2", 2));
         for (let i = 1; i <= roundNumber; i++) {
-            const round = new Round();
+            const round = new Round(this.players);
             this.rounds.push(round);
         }
     }
@@ -24,3 +24,4 @@ export class Game {
         console.log("Winner: " + best[0].playerName + "  Points: " + best[0].points);
     }
 }
+const game = new Game(1);

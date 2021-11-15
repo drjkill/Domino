@@ -1,9 +1,9 @@
 export class Pool {
     constructor() {
         this.pool = [];
-        for (this.leftSide = 0; this.leftSide <= 4; this.leftSide++) {
-            for (this.rightSide = 0; this.rightSide <= 4; this.rightSide++) {
-                const stone = { leftSide: this.leftSide, rightSide: this.rightSide };
+        for (let leftSide = 0; leftSide <= 4; leftSide++) {
+            for (let rightSide = 0; rightSide <= 4; rightSide++) {
+                const stone = { leftSide: leftSide, rightSide: rightSide };
                 this.pool.push(stone);
             }
         }
@@ -40,8 +40,3 @@ export class Pool {
         });
     }
 }
-const pool = new Pool();
-console.log(pool);
-console.log(pool.getPlayerDeck());
-console.log(pool.getGameArea());
-console.log(pool.showStones());

@@ -12,7 +12,7 @@ export class Game {
         this.addPlayer(new Player("c1",0))
         this.addPlayer(new Player("c2",2))
         for(let i = 1; i <= roundNumber; i++){
-        const round = new Round()
+        const round = new Round(this.players)
         this.rounds.push(round)
         }        
     }
@@ -32,7 +32,7 @@ export class Game {
 //=================================================================================================
 
 
-//const game = new Game(1);
+const game = new Game(1);
 //console.log("Game-Round")
 //console.table(game.rounds);
 //console.table(game.rounds[0]);

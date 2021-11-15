@@ -5,15 +5,13 @@ import { Round } from "./round";
 //=================================================================================================
 
 export class Pool {
-    leftSide: number
-    rightSide!: number
     pool: Array<Stone> = []
    
 
     constructor() {
-        for (this.leftSide = 0; this.leftSide <= 4; this.leftSide++) {
-            for (this.rightSide = 0; this.rightSide <= 4; this.rightSide++) {
-                const stone: Stone = {leftSide: this.leftSide, rightSide: this.rightSide};
+        for (let leftSide = 0; leftSide <= 4; leftSide++) {
+            for (let rightSide = 0; rightSide <= 4; rightSide++) {
+                const stone: Stone = {leftSide: leftSide, rightSide: rightSide};
                 this.pool.push(stone);                
             }
         }
@@ -24,7 +22,7 @@ export class Pool {
     getPlayerDeck() {
         const playerDeck:Stone[] = []
         for (let i = 0; i <= 4; i++) {
-            const stone = Math.floor(Math.random() * this.pool.length);
+            const stone:number = Math.floor(Math.random() * this.pool.length);
             playerDeck.push(this.pool[stone]);
             this.pool.splice(stone, 1);            
         } 
@@ -32,7 +30,7 @@ export class Pool {
     }
     getGameArea(){
         const gameArea:Stone[] = []
-        const stone = Math.floor(Math.random() * this.pool.length);
+        const stone:number = Math.floor(Math.random() * this.pool.length);
         gameArea.push(this.pool[stone]);
         this.pool.splice(stone, 1);
         return gameArea
@@ -54,11 +52,11 @@ export class Pool {
 
 //=================================================================================================
 
-const pool = new Pool()
-console.log(pool)
-console.log(pool.getPlayerDeck())
-console.log(pool.getGameArea())
-console.log(pool.showStones())
+//const pool = new Pool()
+//console.log(pool)
+//console.log(pool.getPlayerDeck())
+//console.log(pool.getGameArea())
+//console.log(pool.showStones())
 
 
 

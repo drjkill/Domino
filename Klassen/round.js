@@ -1,14 +1,10 @@
 import { Pool } from "./pool.js";
-import { Player } from "./player.js";
 export class Round {
-    constructor() {
+    constructor(players) {
         this.gameArea = [];
         this.players = [];
         this.deck = [];
-        this.addPlayer(new Player("p1", 1));
-        this.addPlayer(new Player("p2", 2));
-        this.addPlayer(new Player("c1", 3));
-        this.addPlayer(new Player("c2", 4));
+        this.players = players;
         const pool = new Pool();
         this.pool = pool;
         this.setUpDeck();
@@ -35,30 +31,42 @@ export class Round {
         this.players.push(player);
         return player;
     }
+    hasRoundEndet() {
+        this.players.forEach(player => {
+            if (player.isDeckEmpty()) {
+                return true;
+            }
+        });
+        return false;
+    }
     play() {
         this.players.forEach(player => {
-            console.log(player.playerDeck);
-            if (player.playerDeck.length > 0) {
-                const action = this.deck.forEach(stone => {
-                    if (stone.rightSide === this.gameArea[0].leftSide) {
-                        console.log(stone);
+            const action = player.playerDeck.forEach((stone, index) => {
+                if (player.playerDeck.length > 0) {
+                    if (stone.rightSide == this.gameArea[0].leftSide) {
+                        this.gameArea.unshift(stone);
+                        player.playerDeck.splice(index, 1);
                     }
                     else if (stone.leftSide == this.gameArea[this.gameArea.length - 1].rightSide) {
+                        this.gameArea.push();
+                        player.playerDeck.splice(index, 1);
                     }
                     else {
                         if (this.pool.pool.length > 0) {
+                            player.playerDeck.push(this.pool.pool[0]);
+                            this.pool.pool.splice(0, 1);
                         }
                         else {
                             console.log("Pool is empty!!");
                         }
                     }
-                });
-                return action;
-            }
-            else {
-                console.log(player.playerName + "Wins!");
-            }
+                }
+                else {
+                    console.log(player.playerName + "Wins!");
+                }
+            });
         });
+        return this.players;
     }
     getWinner() {
         let best = this.players.sort(function (a, b) {
@@ -67,5 +75,3 @@ export class Round {
         console.log("Winner: " + best[0].playerName + "  Points: " + best[0].points);
     }
 }
-const round = new Round();
-console.log(round.play());
