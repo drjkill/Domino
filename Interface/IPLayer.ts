@@ -1,6 +1,6 @@
 
 export interface IPlayer {
-    playerName: string
-    points: number
+    getPlayerName: () => string
+    getPoints:     () => number
     
 }

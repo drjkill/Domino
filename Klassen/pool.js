@@ -8,7 +8,6 @@ export class Pool {
             }
         }
         this.pool.forEach(stone => {
-            console.table("[ " + stone.leftSide + " | " + stone.rightSide + " ]");
         });
     }
     getPlayerDeck() {

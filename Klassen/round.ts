@@ -5,11 +5,12 @@ import { Stone } from "../Interface/stone.js";
 //=================================================================================================
 
 export class Round {
-    gameArea: Array<Stone> = []
-    players: Array<Player> = []
-    pool: Pool;
-    deck: Array<Stone> = []
-    winner!: Player;
+    private gameArea: Array<Stone> = []
+    private players: Array<Player> = []
+    private pool: Pool;
+    private deck: Array<Stone> = []
+    private winner!: Player;
+
     constructor(players: Player[]) {
         this.players = players
         const pool = new Pool()
@@ -44,52 +45,20 @@ export class Round {
             if (player.isDeckEmpty()) {
                 return true;
             }
-        }); 
+        });
         return false
     }
-    play(): Player[] {
-
-        /**
-         * wenn (runde nicht zuende ist)
-         * spieler macht zug (action)
-         */
-
-
-
-
-        this.players.forEach(player => {
-            const action = player.playerDeck.forEach((stone, index) => {
-                if (player.playerDeck.length > 0) {
-                    if (stone.rightSide == this.gameArea[0].leftSide) {
-                        this.gameArea.unshift(stone);
-                        player.playerDeck.splice(index, 1);
-                    }
-                    else if (stone.leftSide == this.gameArea[this.gameArea.length - 1].rightSide) {
-                        this.gameArea.push();
-                        player.playerDeck.splice(index, 1);
-                    }
-                    else {
-                        if (this.pool.pool.length > 0) {
-                            player.playerDeck.push(this.pool.pool[0]);
-                            this.pool.pool.splice(0, 1);
-                        }
-                        else {
-                            console.log("Pool is empty!!");
-                        }
-                    }
-                }
-                else {
-                    console.log(player.playerName + "Wins!");
-                }
+    play() {
+        while (this.hasRoundEndet() == false) {
+            this.players.forEach(player => {
+                player.dropStone()
             });
-        }); return this.players
-    }
-    getWinner(): void {
-        let best = this.players.sort(function (a: Player, b: Player) {
-            return (a.points as number) - (b.points as number);
+        }
+        this.players.forEach(player => {
+            player.addPoints()
         });
-        console.log("Winner: " + best[0].playerName + "  Points: " + best[0].points)
     }
+  
 }
 
 //=================================================================================================

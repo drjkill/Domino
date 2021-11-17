@@ -7,10 +7,10 @@ export class Game {
     rounds:Array<Round> = []
     players:Array<Player> = []
     constructor(roundNumber:number) {
-        this.addPlayer(new Player("p1",3))
-        this.addPlayer(new Player("p2",5))
-        this.addPlayer(new Player("c1",0))
-        this.addPlayer(new Player("c2",2))
+        this.addPlayer(new Player("p1"))
+        this.addPlayer(new Player("p2"))
+        this.addPlayer(new Player("c1"))
+        this.addPlayer(new Player("c2"))
         for(let i = 1; i <= roundNumber; i++){
         const round = new Round(this.players)
         this.rounds.push(round)
@@ -19,6 +19,9 @@ export class Game {
     addPlayer(player:Player):Player {
         this.players.push(player)
         return player;
+    }
+    getplayer() {
+        return this.players;
     }
     getWinner():void{
         let best = this.players.sort(function (a:Player, b:Player) {
@@ -40,5 +43,8 @@ const game = new Game(1);
 //console.table(game.rounds[0].gameArea);
 //console.log("Game-Players")
 //console.table(game.rounds[0].players);
+console.table(game.rounds[0].play());
 //console.log("Round-Pool")
 //console.table(game.rounds[0].pool.showStones());
+console.table(game.rounds);
+console.table(game.rounds[0].players[1].points);

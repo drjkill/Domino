@@ -6,6 +6,7 @@ import { Round } from "./round";
 
 export class Pool {
     pool: Array<Stone> = []
+    static pool: Pool;
    
 
     constructor() {
@@ -16,7 +17,7 @@ export class Pool {
             }
         }
         this.pool.forEach(stone => {
-            console.table("[ " + stone.leftSide + " | " + stone.rightSide + " ]");
+            //console.table("[ " + stone.leftSide + " | " + stone.rightSide + " ]");
           })
     }
     getPlayerDeck() {

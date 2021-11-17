@@ -40,38 +40,13 @@ export class Round {
         return false;
     }
     play() {
-        this.players.forEach(player => {
-            const action = player.playerDeck.forEach((stone, index) => {
-                if (player.playerDeck.length > 0) {
-                    if (stone.rightSide == this.gameArea[0].leftSide) {
-                        this.gameArea.unshift(stone);
-                        player.playerDeck.splice(index, 1);
-                    }
-                    else if (stone.leftSide == this.gameArea[this.gameArea.length - 1].rightSide) {
-                        this.gameArea.push();
-                        player.playerDeck.splice(index, 1);
-                    }
-                    else {
-                        if (this.pool.pool.length > 0) {
-                            player.playerDeck.push(this.pool.pool[0]);
-                            this.pool.pool.splice(0, 1);
-                        }
-                        else {
-                            console.log("Pool is empty!!");
-                        }
-                    }
-                }
-                else {
-                    console.log(player.playerName + "Wins!");
-                }
+        while (this.hasRoundEndet() == false) {
+            this.players.forEach(player => {
+                player.dropStone();
             });
+        }
+        this.players.forEach(player => {
+            player.addPoints();
         });
-        return this.players;
-    }
-    getWinner() {
-        let best = this.players.sort(function (a, b) {
-            return a.points - b.points;
-        });
-        console.log("Winner: " + best[0].playerName + "  Points: " + best[0].points);
     }
 }
