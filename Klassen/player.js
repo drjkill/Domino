@@ -16,9 +16,12 @@ export class Player {
     }
     dropStone() {
         console.log(this.playerName + " has dropped a Stone!");
+        return this.playerDeck.pop();
     }
     ;
     reciveStone() {
+        console.log(this.playerName + " recieved a Stone!");
+        return this.stone;
     }
     addPoints() {
         let roundPoint = 0;

@@ -29,5 +29,3 @@ export class Game {
 }
 const game = new Game(1);
 console.table(game.rounds[0].play());
-console.table(game.rounds);
-console.table(game.rounds[0].players[1].points);

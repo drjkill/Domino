@@ -4,8 +4,10 @@ import { Round } from "./round.js";
 //=================================================================================================
 
 export class Game {
-    rounds:Array<Round> = []
-    players:Array<Player> = []
+    rounds:  Array<Round> =  []
+    private players: Array<Player> = []
+    private winner!: Player;
+
     constructor(roundNumber:number) {
         this.addPlayer(new Player("p1"))
         this.addPlayer(new Player("p2"))
@@ -16,14 +18,14 @@ export class Game {
         this.rounds.push(round)
         }        
     }
-    addPlayer(player:Player):Player {
+    private addPlayer(player:Player):Player {
         this.players.push(player)
         return player;
     }
-    getplayer() {
+    private getplayer() {
         return this.players;
     }
-    getWinner():void{
+    private getWinner():void{
         let best = this.players.sort(function (a:Player, b:Player) {
             return (a.points as number) - (b.points as number);
         });
@@ -43,8 +45,8 @@ const game = new Game(1);
 //console.table(game.rounds[0].gameArea);
 //console.log("Game-Players")
 //console.table(game.rounds[0].players);
-console.table(game.rounds[0].play());
+//console.table(game.rounds[0].play());
 //console.log("Round-Pool")
 //console.table(game.rounds[0].pool.showStones());
-console.table(game.rounds);
-console.table(game.rounds[0].players[1].points);
+//console.table(game.rounds);
+//console.table(game.rounds[0].players[1].points);

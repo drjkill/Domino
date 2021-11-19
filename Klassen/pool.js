@@ -26,16 +26,17 @@ export class Pool {
         this.pool.splice(stone, 1);
         return gameArea;
     }
+    playerGetStone() {
+        const stone = Math.floor(Math.random() * this.pool.length);
+        this.getPlayerDeck().push(this.pool[stone]);
+        this.pool.splice(stone, 1);
+        return this.getPlayerDeck();
+    }
     getStonePoints() {
         this.pool.forEach(stone => {
             const points = stone.leftSide + stone.rightSide;
             const stonePoint = console.log(points);
             return stonePoint;
-        });
-    }
-    showStones() {
-        this.pool.forEach(stone => {
-            console.log("[ " + stone.leftSide + " | " + stone.rightSide + " ]");
         });
     }
 }

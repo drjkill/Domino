@@ -33,6 +33,7 @@ export class Round {
     }
     hasRoundEndet() {
         this.players.forEach(player => {
+            console.log(player.playerName + " deck is empty = " + player.isDeckEmpty());
             if (player.isDeckEmpty()) {
                 return true;
             }
@@ -43,6 +44,7 @@ export class Round {
         while (this.hasRoundEndet() == false) {
             this.players.forEach(player => {
                 player.dropStone();
+                console.log(player.playerName + " deck is empty = " + player.isDeckEmpty());
             });
         }
         this.players.forEach(player => {
