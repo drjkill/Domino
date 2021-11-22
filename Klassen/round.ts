@@ -5,10 +5,10 @@ import { Stone } from "../Interface/stone.js";
 //=================================================================================================
 
 export class Round {
-     private gameArea: Array<Stone>  = []
-     private players:  Array<Player> = []
-     private deck:     Array<Stone>  = []
-     private pool: Pool;
+     gameArea: Array<Stone>  = []
+     players:  Array<Player> = []
+     deck:     Array<Stone>  = []
+     pool: Pool;
 
     constructor(players: Player[]) {
         this.players = players
@@ -17,28 +17,28 @@ export class Round {
         this.setUpDeck()
         this.setUpGameArea()
     }
-    private setUpDeck() {
+    setUpDeck() {
         this.players.forEach(player => {
             player.setPlayerDeck(this.pool.getPlayerDeck())
         })
     }
-    private setUpGameArea() {
+    setUpGameArea() {
         this.setGameArea(this.pool.getGameArea())
     }
-    private setGameArea(gameArea: Stone[]): void {
+    setGameArea(gameArea: Stone[]): void {
         this.gameArea = gameArea
     }
-    private getGameArea() {
+    getGameArea() {
         return this.gameArea
     }
-    private getPool(): Pool {
+    getPool(): Pool {
         return this.pool;
     }
-    private addPlayer(player: Player): Player {
+    addPlayer(player: Player): Player {
         this.players.push(player)
         return player
     }
-    private hasRoundEndet(): boolean {
+    hasRoundEndet(): boolean {
         this.players.forEach(player => {
             console.log(player.playerName + " deck is empty = " + player.isDeckEmpty())
             if (player.isDeckEmpty()) {
@@ -47,7 +47,7 @@ export class Round {
         });
         return false
     }
-    private play() {
+    play() {
         while (this.hasRoundEndet() == false) {
             this.players.forEach(player => {
                 player.dropStone()

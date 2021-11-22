@@ -5,8 +5,8 @@ import { Round } from "./round.js";
 
 export class Game {
     rounds:  Array<Round> =  []
-    private players: Array<Player> = []
-    private winner!: Player;
+    players: Array<Player> = []
+    winner!: Player;
 
     constructor(roundNumber:number) {
         this.addPlayer(new Player("p1"))
@@ -18,14 +18,14 @@ export class Game {
         this.rounds.push(round)
         }        
     }
-    private addPlayer(player:Player):Player {
+     addPlayer(player:Player):Player {
         this.players.push(player)
         return player;
     }
-    private getplayer() {
+     getplayer() {
         return this.players;
     }
-    private getWinner():void{
+     getWinner():void{
         let best = this.players.sort(function (a:Player, b:Player) {
             return (a.points as number) - (b.points as number);
         });

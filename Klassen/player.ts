@@ -8,8 +8,8 @@ import { Pool } from './pool';
 export class Player implements IPlayer {
     playerName: string
     points: number = 0
-    private stone!:Stone
-    private playerDeck: Array<Stone> = [];
+    stone!:Stone
+    playerDeck: Array<Stone> = [];
     
 
     constructor(playerName: string) {
@@ -31,8 +31,8 @@ export class Player implements IPlayer {
         return this.playerDeck.pop()        
     };
     reciveStone():Stone {
-
         console.log(this.playerName + " recieved a Stone!")
+     
      return this.stone
     }
      addPoints():number {

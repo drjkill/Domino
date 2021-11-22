@@ -6,7 +6,7 @@ import { Round } from "./round";
 //=================================================================================================
 
 export class Pool {
-    private pool: Array<Stone> = []
+    pool: Array<Stone> = []
 
     constructor() {
         for (let leftSide = 0; leftSide <= 4; leftSide++) {
@@ -35,13 +35,13 @@ export class Pool {
         this.pool.splice(stone, 1);
         return gameArea
     }
-    private playerGetStone(){
+     playerGetStone(){
         const stone:number = Math.floor(Math.random() * this.pool.length);
         this.getPlayerDeck().push(this.pool[stone]);
         this.pool.splice(stone, 1);
-        return this.getPlayerDeck()
+        return this
     }
-    private getStonePoints() {
+     getStonePoints() {
         this.pool.forEach(stone => {
             const points =  stone.leftSide + stone.rightSide;
             const stonePoint =console.log(points)
