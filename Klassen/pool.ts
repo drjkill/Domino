@@ -52,12 +52,5 @@ export class Pool {
 
 //=================================================================================================
 
-//const pool = new Pool()
-//console.log(pool)
-//console.log(pool.getPlayerDeck())
-//console.log(pool.getGameArea())
-//console.log(pool.showStones())
-
-
 
          
