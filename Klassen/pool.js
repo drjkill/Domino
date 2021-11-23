@@ -30,7 +30,7 @@ export class Pool {
         const stone = Math.floor(Math.random() * this.pool.length);
         this.getPlayerDeck().push(this.pool[stone]);
         this.pool.splice(stone, 1);
-        return this.getPlayerDeck();
+        return this;
     }
     getStonePoints() {
         this.pool.forEach(stone => {

@@ -57,7 +57,7 @@ export class Game {
 //console.table(game.rounds[0].gameArea);
 //console.log("Game-Players")
 //console.table(game.rounds[0].players);
-//console.table(game.rounds[0].play());
+console.table(game.rounds[0].play());
 //console.log("Round-Pool")
 //console.table(game.rounds[0].pool.showStones());
 //console.table(game.rounds);
