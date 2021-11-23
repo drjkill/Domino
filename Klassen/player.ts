@@ -1,11 +1,26 @@
+/**
+    * @description      : 
+    * @author           : 
+    * @group            : 
+    * @created          : 22/11/2021 - 15:43:10
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 22/11/2021
+    * - Author          : 
+    * - Modification    : 
+**/
 import { Stone } from '../Interface/stone';
 import { IPlayer } from "../Interface/IPLayer";
-import { Round } from "./round.js";
-import { Pool } from './pool';
+//import { Round } from "./round.js";
+//import { Pool } from './pool';
 
 //=================================================================================================
 
 export class Player implements IPlayer {
+    static isDeckEmpty() {
+        throw new Error("Method not implemented.");
+    }
     playerName: string
     points: number = 0
     stone!:Stone
@@ -13,8 +28,7 @@ export class Player implements IPlayer {
     
 
     constructor(playerName: string) {
-        this.playerName = playerName 
-        this.playerDeck = this.playerDeck              
+        this.playerName = playerName              
         return this;
     }
      setPlayerDeck(playerDeck: Stone[]) {

@@ -1,3 +1,15 @@
+/**
+    * @description      : 
+    * @author           : 
+    * @group            : 
+    * @created          : 22/11/2021 - 15:47:49
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 22/11/2021
+    * - Author          : 
+    * - Modification    : 
+**/
 import { Player } from "./player.js";
 import { Round } from "./round.js";
 
@@ -37,7 +49,7 @@ export class Game {
 //=================================================================================================
 
 
-const game = new Game(1);
+//const game = new Game(1);
 //console.log("Game-Round")
 //console.table(game.rounds);
 //console.table(game.rounds[0]);

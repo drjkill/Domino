@@ -1,3 +1,15 @@
+/**
+    * @description      : 
+    * @author           : 
+    * @group            : 
+    * @created          : 22/11/2021 - 15:51:30
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 22/11/2021
+    * - Author          : 
+    * - Modification    : 
+**/
 import { Pool } from "./pool.js";
 import { Player } from "./player.js";
 import { Stone } from "../Interface/stone.js";

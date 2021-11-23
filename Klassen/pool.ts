@@ -1,7 +1,20 @@
+/**
+    * @description      : 
+    * @author           : 
+    * @group            : 
+    * @created          : 22/11/2021 - 15:47:04
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 22/11/2021
+    * - Author          : 
+    * - Modification    : 
+**/
+
 
 import { Stone } from "../Interface/stone";
-import { Player } from "./player";
-import { Round } from "./round";
+//import { Player } from "./player";
+//import { Round } from "./round";
 
 //=================================================================================================
 
