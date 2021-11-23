@@ -32,19 +32,45 @@ export class Round {
         return player;
     }
     hasRoundEndet() {
-        this.players.forEach(player => {
-            console.log(player.playerName + " deck is empty = " + player.isDeckEmpty());
+        for (let player of this.players) {
             if (player.isDeckEmpty()) {
                 return true;
             }
-        });
+        }
+        ;
         return false;
+    }
+    pushStoneToGameArea(playerStone) {
+        if (playerStone.rightSide === this.gameArea[0].leftSide) {
+            this.gameArea.unshift(playerStone);
+        }
+        else if (playerStone.leftSide === this.gameArea[this.gameArea.length - 1].rightSide) {
+            this.gameArea.push(playerStone);
+        }
+        else {
+            console.log("is nich Digga ");
+        }
+    }
+    steinPruefen(playerStone) {
+        if (playerStone.rightSide === this.gameArea[0].leftSide) {
+            return true;
+        }
+        else if (playerStone.leftSide === this.gameArea[this.gameArea.length - 1].rightSide) {
+            return true;
+        }
+        else {
+            console.log("is nich Digga ");
+            return false;
+        }
     }
     play() {
         while (this.hasRoundEndet() == false) {
             this.players.forEach(player => {
-                player.dropStone();
-                console.log(player.playerName + " deck is empty = " + player.isDeckEmpty());
+                const playerStone = player.dropStone();
+                if (this.steinPruefen(playerStone) == true) {
+                    this.pushStoneToGameArea(playerStone);
+                    console.log(player.playerName + " deck is empty = " + player.isDeckEmpty());
+                }
             });
         }
         this.players.forEach(player => {

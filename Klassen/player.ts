@@ -2,6 +2,7 @@ import { Stone } from '../Interface/stone';
 import { IPlayer } from "../Interface/IPLayer";
 import { Round } from "./round.js";
 import { Pool } from './pool';
+import { setUncaughtExceptionCaptureCallback } from 'process';
 
 //=================================================================================================
 
@@ -26,9 +27,22 @@ export class Player implements IPlayer {
      isDeckEmpty(): boolean {
         return this.playerDeck.length === 0
     }
-     dropStone():Stone | undefined {  
+    canDropStone(playerStone:Stone) {
+        if() {
+            this.dropStone()
+        }
+        else{
+            this.reciveStone()
+        }
+    }
+     dropStone():Stone {          
         console.log(this.playerName + " has dropped a Stone!")              
-        return this.playerDeck.pop()        
+        const playerStone = this.playerDeck.pop() 
+        if(!playerStone) {// wenn stone is undefined(false)
+            throw new Error('keine Steine mehr');
+        }
+         return playerStone
+     
     };
     reciveStone():Stone {
         console.log(this.playerName + " recieved a Stone!")

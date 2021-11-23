@@ -3,6 +3,7 @@ export class Player {
         this.points = 0;
         this.playerDeck = [];
         this.playerName = playerName;
+        this.playerDeck = this.playerDeck;
         return this;
     }
     setPlayerDeck(playerDeck) {
@@ -14,9 +15,21 @@ export class Player {
     isDeckEmpty() {
         return this.playerDeck.length === 0;
     }
+    canDropStone(playerStone) {
+        if () {
+            this.dropStone();
+        }
+        else {
+            this.reciveStone();
+        }
+    }
     dropStone() {
         console.log(this.playerName + " has dropped a Stone!");
-        return this.playerDeck.pop();
+        const playerStone = this.playerDeck.pop();
+        if (!playerStone) {
+            throw new Error('keine Steine mehr');
+        }
+        return playerStone;
     }
     ;
     reciveStone() {
