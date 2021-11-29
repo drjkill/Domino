@@ -1,8 +1,13 @@
 import { IPlayer } from "../Interface/IPLayer";
 import { Stone } from "../Interface/stone";
+<<<<<<< HEAD
 import { Round } from "./round.js";
 export abstract class APlayer implements IPlayer{
 
+=======
+
+export abstract class APlayer implements IPlayer{
+>>>>>>> main
     playerName: string;
     points: number ;
     playerDeck: Array<Stone> = [];
@@ -13,7 +18,11 @@ export abstract class APlayer implements IPlayer{
         return this;
     }
     getPlayerName(){
+<<<<<<< HEAD
         return this.playerName
+=======
+        return this.playerN
+>>>>>>> main
     }
     setPlayerDeck(playerDeck: Stone[]) {
         this.playerDeck = playerDeck
@@ -22,7 +31,11 @@ export abstract class APlayer implements IPlayer{
         return this.playerDeck.length === 0
     }
     steinPruefen(playerStone:Stone ):boolean {
+<<<<<<< HEAD
         if(playerStone.rightSide === Round.gameArea[0].leftSide){
+=======
+        if(playerStone.rightSide === round.gameArea[0].leftSide){
+>>>>>>> main
             return true
         }else if(playerStone.leftSide === this.gameArea[this.gameArea.length -1].rightSide) {
             return true

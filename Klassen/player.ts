@@ -18,9 +18,12 @@ import { APlayer } from './APlayer';
 
 //=================================================================================================
 
+<<<<<<< HEAD
 
 //=================================================================================================
 
+=======
+>>>>>>> main
 export class Player extends APlayer {
     playerName!: string
     points: number = 0
@@ -28,6 +31,7 @@ export class Player extends APlayer {
     playerDeck: Array<Stone> = [];
     round!: Round
     pool!:Pool
+<<<<<<< HEAD
     constructor(playerName: string) {
         super(playerName);
         this.playerName = playerName              
@@ -45,6 +49,12 @@ export class Player extends APlayer {
 
     canDropStone(playerStone:Stone): void {
         if(this.steinPruefen(playerStone)== true) {
+=======
+
+
+    canDropStone(playerStone:Stone) {
+        if(this.round.steinPruefen(playerStone)== true) {
+>>>>>>> main
             this.dropStone()
         }
         else{
