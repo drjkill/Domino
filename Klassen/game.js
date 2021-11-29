@@ -24,7 +24,8 @@ export class Game {
         let best = this.players.sort(function (a, b) {
             return a.points - b.points;
         });
-        console.log("Winner: " + best[0].playerName + "  Points: " + best[0].points);
+        let winner = ("Winner: " + best[0].playerName + "  Points: " + best[0].points);
+        return winner;
     }
 }
 const game = new Game(1);

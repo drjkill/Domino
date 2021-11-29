@@ -2,33 +2,21 @@ import { Stone } from '../Interface/stone';
 import { IPlayer } from "../Interface/IPLayer";
 import { Round } from "./round.js";
 import { Pool } from './pool';
-import { setUncaughtExceptionCaptureCallback } from 'process';
+import { APlayer } from './APlayer';
 
 //=================================================================================================
 
-export class Player implements IPlayer {
-    playerName: string
+export class Player extends APlayer {
+    playerName!: string
     points: number = 0
     stone!:Stone
     playerDeck: Array<Stone> = [];
-    
+    round!: Round
+    pool!:Pool
 
-    constructor(playerName: string) {
-        this.playerName = playerName 
-        this.playerDeck = this.playerDeck              
-        return this;
-    }
-     setPlayerDeck(playerDeck: Stone[]) {
-        this.playerDeck = playerDeck
-    }
-     getPlayerDeck(): Stone[] {
-        return this.playerDeck
-    }
-     isDeckEmpty(): boolean {
-        return this.playerDeck.length === 0
-    }
+
     canDropStone(playerStone:Stone) {
-        if() {
+        if(this.round.steinPruefen(playerStone)== true) {
             this.dropStone()
         }
         else{
@@ -41,21 +29,8 @@ export class Player implements IPlayer {
         if(!playerStone) {// wenn stone is undefined(false)
             throw new Error('keine Steine mehr');
         }
-         return playerStone
-     
+         return playerStone     
     };
-    reciveStone():Stone {
-        console.log(this.playerName + " recieved a Stone!")
-     
-     return this.stone
-    }
-     addPoints():number {
-        let roundPoint = 0       
-        for( let i = 0; i < this.playerDeck.length; i++) {
-            const stonepoints = this.playerDeck[i].leftSide + this.playerDeck[i].rightSide  
-             roundPoint +=stonepoints                              
-        }         
-        return this.points += roundPoint       
-    }
+    
 }
 //=================================================================================================

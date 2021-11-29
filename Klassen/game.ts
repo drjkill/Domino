@@ -25,11 +25,12 @@ export class Game {
      getplayer() {
         return this.players;
     }
-     getWinner():void{
+     getWinner(){
         let best = this.players.sort(function (a:Player, b:Player) {
             return (a.points as number) - (b.points as number);
         });
-        console.log("Winner: " + best[0].playerName + "  Points: " + best[0].points) 
+        let winner = ("Winner: " + best[0].playerName + "  Points: " + best[0].points)
+        return winner 
     }
             
 } 
@@ -46,7 +47,12 @@ const game = new Game(1);
 //console.log("Game-Players")
 //console.table(game.rounds[0].players);
 console.table(game.rounds[0].play());
-//console.log("Round-Pool")
-//console.table(game.rounds[0].pool.showStones());
-//console.table(game.rounds);
-//console.table(game.rounds[0].players[1].points);
+console.table(game.rounds[0].pool)
+console.table(game.rounds[0].gameArea)
+console.table(game.rounds[0].play());
+console.table(game.rounds[0].pool)
+console.table(game.rounds[0].gameArea)
+console.table(game.rounds[0].players[0].playerDeck)
+console.table(game.rounds[0].players[1].playerDeck)
+console.table(game.rounds[0].players[2].playerDeck)
+console.table(game.rounds[0].players[3].playerDeck)

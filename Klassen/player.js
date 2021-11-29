@@ -16,7 +16,7 @@ export class Player {
         return this.playerDeck.length === 0;
     }
     canDropStone(playerStone) {
-        if () {
+        if (this.round.steinPruefen(playerStone) == true) {
             this.dropStone();
         }
         else {
@@ -34,6 +34,7 @@ export class Player {
     ;
     reciveStone() {
         console.log(this.playerName + " recieved a Stone!");
+        let stone = this.playerDeck.push();
         return this.stone;
     }
     addPoints() {

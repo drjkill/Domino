@@ -66,6 +66,13 @@ export class Round {
     play() {
         while (this.hasRoundEndet() == false) {
             this.players.forEach(player => {
+                console.table(this.gameArea);
+                console.log("======================================");
+                console.table(this.players[0].playerDeck);
+                console.table(this.players[1].playerDeck);
+                console.table(this.players[2].playerDeck);
+                console.table(this.players[3].playerDeck);
+                console.log("======================================");
                 const playerStone = player.dropStone();
                 if (this.steinPruefen(playerStone) == true) {
                     this.pushStoneToGameArea(playerStone);
