@@ -21,6 +21,7 @@ export class Round {
      players:  Array<Player> = []
      deck:     Array<Stone>  = []
      pool: Pool;
+    static gameArea: any;
 
     constructor(players: Player[]) {
         this.players = players

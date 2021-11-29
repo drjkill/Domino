@@ -1,3 +1,4 @@
+import { Round } from "./round";
 export class APlayer {
     constructor(playerName) {
         this.playerDeck = [];
@@ -15,10 +16,10 @@ export class APlayer {
         return this.playerDeck.length === 0;
     }
     steinPruefen(playerStone) {
-        if (playerStone.rightSide === round.gameArea[0].leftSide) {
+        if (playerStone.rightSide === Round.gameArea[0].leftSide) {
             return true;
         }
-        else if (playerStone.leftSide === this.gameArea[this.gameArea.length - 1].rightSide) {
+        else if (playerStone.leftSide === Round.gameArea[Round.gameArea.length - 1].rightSide) {
             return true;
         }
         else {

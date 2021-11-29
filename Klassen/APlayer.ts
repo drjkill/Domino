@@ -1,10 +1,11 @@
 import { IPlayer } from "../Interface/IPLayer";
 import { Stone } from "../Interface/stone";
-import { Round } from "./round.js";
+import { Round } from "./round";
 export abstract class APlayer implements IPlayer{
     playerName: string;
     points: number ;
     playerDeck: Array<Stone> = [];
+    stone!: Stone;
 
     constructor(playerName: string) {
         this.playerName = playerName 
@@ -24,10 +25,10 @@ export abstract class APlayer implements IPlayer{
     }
     steinPruefen(playerStone:Stone ):boolean {
 
-        if(playerStone.rightSide === round.gameArea[0].leftSide){
+        if(playerStone.rightSide === Round.gameArea[0].leftSide){
 
             return true
-        }else if(playerStone.leftSide === this.gameArea[this.gameArea.length -1].rightSide) {
+        }else if(playerStone.leftSide === Round.gameArea[Round.gameArea.length -1].rightSide) {
             return true
         }else {console.log("is nich Digga ")
             return false
