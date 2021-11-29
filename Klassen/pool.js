@@ -26,11 +26,10 @@ export class Pool {
         this.pool.splice(stone, 1);
         return gameArea;
     }
-    playerGetStone() {
-        const stone = Math.floor(Math.random() * this.pool.length);
-        this.getPlayerDeck().push(this.pool[stone]);
+    playerGetStone(stone) {
+        this.player.playerDeck.push(this.pool[stone]);
         this.pool.splice(stone, 1);
-        return this;
+        return this.player.playerDeck;
     }
     getStonePoints() {
         this.pool.forEach(stone => {

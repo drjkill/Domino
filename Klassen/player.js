@@ -1,9 +1,10 @@
-export class Player {
+import { APlayer } from './APlayer';
+export class Player extends APlayer {
     constructor(playerName) {
+        super(playerName);
         this.points = 0;
         this.playerDeck = [];
         this.playerName = playerName;
-        this.playerDeck = this.playerDeck;
         return this;
     }
     setPlayerDeck(playerDeck) {
@@ -16,7 +17,7 @@ export class Player {
         return this.playerDeck.length === 0;
     }
     canDropStone(playerStone) {
-        if () {
+        if (this.steinPruefen(playerStone) == true) {
             this.dropStone();
         }
         else {
@@ -32,16 +33,4 @@ export class Player {
         return playerStone;
     }
     ;
-    reciveStone() {
-        console.log(this.playerName + " recieved a Stone!");
-        return this.stone;
-    }
-    addPoints() {
-        let roundPoint = 0;
-        for (let i = 0; i < this.playerDeck.length; i++) {
-            const stonepoints = this.playerDeck[i].leftSide + this.playerDeck[i].rightSide;
-            roundPoint += stonepoints;
-        }
-        return this.points += roundPoint;
-    }
 }

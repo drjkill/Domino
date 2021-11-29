@@ -12,28 +12,24 @@
 **/
 import { Stone } from '../Interface/stone';
 import { IPlayer } from "../Interface/IPLayer";
-<<<<<<< HEAD
-//import { Round } from "./round.js";
-//import { Pool } from './pool';
-=======
 import { Round } from "./round.js";
 import { Pool } from './pool';
-import { setUncaughtExceptionCaptureCallback } from 'process';
->>>>>>> 1d5a434cfd9c891544525db8626f8583404bf583
+import { APlayer } from './APlayer';
 
 //=================================================================================================
 
-export class Player implements IPlayer {
-    static isDeckEmpty() {
-        throw new Error("Method not implemented.");
-    }
-    playerName: string
+
+//=================================================================================================
+
+export class Player extends APlayer {
+    playerName!: string
     points: number = 0
     stone!:Stone
     playerDeck: Array<Stone> = [];
-    
-
+    round!: Round
+    pool!:Pool
     constructor(playerName: string) {
+        super(playerName);
         this.playerName = playerName              
         return this;
     }
@@ -46,8 +42,9 @@ export class Player implements IPlayer {
      isDeckEmpty(): boolean {
         return this.playerDeck.length === 0
     }
-    canDropStone(playerStone:Stone) {
-        if() {
+
+    canDropStone(playerStone:Stone): void {
+        if(this.steinPruefen(playerStone)== true) {
             this.dropStone()
         }
         else{
@@ -60,21 +57,8 @@ export class Player implements IPlayer {
         if(!playerStone) {// wenn stone is undefined(false)
             throw new Error('keine Steine mehr');
         }
-         return playerStone
-     
+         return playerStone     
     };
-    reciveStone():Stone {
-        console.log(this.playerName + " recieved a Stone!")
-     
-     return this.stone
-    }
-     addPoints():number {
-        let roundPoint = 0       
-        for( let i = 0; i < this.playerDeck.length; i++) {
-            const stonepoints = this.playerDeck[i].leftSide + this.playerDeck[i].rightSide  
-             roundPoint +=stonepoints                              
-        }         
-        return this.points += roundPoint       
-    }
+    
 }
 //=================================================================================================

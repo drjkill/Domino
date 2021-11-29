@@ -66,20 +66,19 @@ export class Round {
             this.gameArea.push(playerStone);
           }else {console.log("is nich Digga ")}
     }
-    steinPruefen(playerStone:Stone ):boolean {
-        if(playerStone.rightSide === this.gameArea[0].leftSide){
-            return true
-        }else if(playerStone.leftSide === this.gameArea[this.gameArea.length -1].rightSide) {
-            return true
-        }else {console.log("is nich Digga ")
-            return false
-        }
-    }
+  
     play() {
         while (this.hasRoundEndet() == false) {
             this.players.forEach(player => {
+                console.table(this.gameArea)
+                console.log("======================================")
+                console.table(this.players[0].playerDeck);
+                console.table(this.players[1].playerDeck);
+                console.table(this.players[2].playerDeck);
+                console.table(this.players[3].playerDeck);
+                console.log("======================================")
                const playerStone = player.dropStone()
-               if(this.steinPruefen(playerStone) == true)
+               if(player.steinPruefen(playerStone) == true)
                {this.pushStoneToGameArea(playerStone)
                 console.log(player.playerName + " deck is empty = " + player.isDeckEmpty())}
             });
