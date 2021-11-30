@@ -13,9 +13,7 @@ export abstract class APlayer implements IPlayer{
         return this;
     }
     getPlayerName(){
-
         return this.playerName
-
     }
     setPlayerDeck(playerDeck: Stone[]) {
         this.playerDeck = playerDeck
@@ -24,9 +22,7 @@ export abstract class APlayer implements IPlayer{
         return this.playerDeck.length === 0
     }
     steinPruefen(playerStone:Stone ):boolean {
-
         if(playerStone.rightSide === Round.gameArea[0].leftSide){
-
             return true
         }else if(playerStone.leftSide === Round.gameArea[Round.gameArea.length -1].rightSide) {
             return true

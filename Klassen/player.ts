@@ -40,10 +40,8 @@ export class Player extends APlayer {
      isDeckEmpty(): boolean {
         return this.playerDeck.length === 0
     }
-
     canDropStone(playerStone:Stone): void {
         if(this.steinPruefen(playerStone)== true) {
-
             this.dropStone()
         }
         else{

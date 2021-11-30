@@ -52,8 +52,7 @@ export class Round {
         return player
     }
     hasRoundEndet(): boolean {
-        for(let player of this.players){
-            
+        for(let player of this.players){            
             if (player.isDeckEmpty()) {
                 return true;
             }
@@ -66,8 +65,7 @@ export class Round {
           }else if(playerStone.leftSide === this.gameArea[this.gameArea.length -1].rightSide) {
             this.gameArea.push(playerStone);
           }else {console.log("is nich Digga ")}
-    }
-  
+    } 
     play() {
         while (this.hasRoundEndet() == false) {
             this.players.forEach(player => {
@@ -82,14 +80,12 @@ export class Round {
                if(player.steinPruefen(playerStone) == true)
                {this.pushStoneToGameArea(playerStone)
                 console.log(player.playerName + " deck is empty = " + player.isDeckEmpty())}
-            });
-                        
+            });                        
         }
         this.players.forEach(player => {
             player.addPoints()
         });
-    }
-  
+    }  
 }
 
 //=================================================================================================
