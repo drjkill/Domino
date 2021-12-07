@@ -12,17 +12,16 @@
 **/
 import { Pool } from "./pool.js";
 import { Player } from "./player.js";
-import { Stone } from "../Interface/stone.js";
+import { IStone } from "../Interface/IStone.js";
 
 //=================================================================================================
 
 export class Round {
-     gameArea: Array<Stone>  = []
+     gameArea: Array<IStone>  = []
      players:  Array<Player> = []
-     deck:     Array<Stone>  = []
      pool: Pool;
-    static gameArea: any;
-
+    static gameArea: Array<IStone>  = [];
+    
     constructor(players: Player[]) {
         this.players = players
         const pool   = new Pool()
@@ -38,10 +37,10 @@ export class Round {
     setUpGameArea() {
         this.setGameArea(this.pool.getGameArea())
     }
-    setGameArea(gameArea: Stone[]): void {
+    setGameArea(gameArea: IStone[]): void {
         this.gameArea = gameArea
     }
-    getGameArea() {
+    getGameArea():IStone[] {
         return this.gameArea
     }
     getPool(): Pool {
@@ -59,27 +58,20 @@ export class Round {
         };
         return false
     }
-    pushStoneToGameArea(playerStone: Stone){
-          if(playerStone.rightSide === this.gameArea[0].leftSide){
+    pushStoneToGameArea(playerStone: IStone){
+          if(playerStone.getRightSide() === this.gameArea[0].getLeftSide()){
               this.gameArea.unshift(playerStone);
-          }else if(playerStone.leftSide === this.gameArea[this.gameArea.length -1].rightSide) {
+          }else if(playerStone.getLeftSide() === this.gameArea[this.gameArea.length -1].getRightSide()) {
             this.gameArea.push(playerStone);
           }else {console.log("is nich Digga ")}
     } 
     play() {
         while (this.hasRoundEndet() == false) {
             this.players.forEach(player => {
-                console.table(this.gameArea)
-                console.log("======================================")
-                console.table(this.players[0].playerDeck);
-                console.table(this.players[1].playerDeck);
-                console.table(this.players[2].playerDeck);
-                console.table(this.players[3].playerDeck);
-                console.log("======================================")
                const playerStone = player.dropStone()
-               if(player.steinPruefen(playerStone) == true)
-               {this.pushStoneToGameArea(playerStone)
-                console.log(player.playerName + " deck is empty = " + player.isDeckEmpty())}
+               if(player.steinPruefen(playerStone) == true) {
+                   this.pushStoneToGameArea(playerStone)
+                   console.log(player.playerName + " deck is empty = " + player.isDeckEmpty())}
             });                        
         }
         this.players.forEach(player => {

@@ -1,11 +1,11 @@
 import { IPlayer } from "../Interface/IPLayer";
-import { Stone } from "../Interface/stone";
+import { IStone } from "../Interface/IStone";
 import { Round } from "./round";
 export abstract class APlayer implements IPlayer{
     playerName: string;
     points: number ;
-    playerDeck: Array<Stone> = [];
-    stone!: Stone;
+    playerDeck: Array<IStone> = [];
+    stone!: IStone;
 
     constructor(playerName: string) {
         this.playerName = playerName 
@@ -15,32 +15,26 @@ export abstract class APlayer implements IPlayer{
     getPlayerName(){
         return this.playerName
     }
-    setPlayerDeck(playerDeck: Stone[]) {
+    setPlayerDeck(playerDeck: IStone[]) {
         this.playerDeck = playerDeck
     }
      isDeckEmpty(): boolean {
         return this.playerDeck.length === 0
     }
-    steinPruefen(playerStone:Stone ):boolean {
-        if(playerStone.rightSide === Round.gameArea[0].leftSide){
+    steinPruefen(playerStone:IStone ):boolean {
+        if(playerStone.getRightSide() === Round.gameArea[0].getLeftSide()){
             return true
-        }else if(playerStone.leftSide === Round.gameArea[Round.gameArea.length -1].rightSide) {
+        }else if(playerStone.getLeftSide() === Round.gameArea[Round.gameArea.length -1].getRightSide()) {
             return true
         }else {console.log("is nich Digga ")
             return false
         }
     }
-    reciveStone():Stone {
+    reciveStone():IStone {
         console.log(this.playerName + " recieved a Stone!")
         let stone = this.playerDeck.push()
         return this.stone
     }
-     addPoints():number {
-        let roundPoint = 0       
-        for( let i = 0; i < this.playerDeck.length; i++) {
-            const stonepoints = this.playerDeck[i].leftSide + this.playerDeck[i].rightSide  
-             roundPoint +=stonepoints                              
-        }         
-        return this.points += roundPoint       
-    }
+    addPoints():number{return 0}
+
 }

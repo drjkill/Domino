@@ -41,10 +41,10 @@ export class Round {
         return false;
     }
     pushStoneToGameArea(playerStone) {
-        if (playerStone.rightSide === this.gameArea[0].leftSide) {
+        if (playerStone.getRightSide() === this.gameArea[0].getLeftSide()) {
             this.gameArea.unshift(playerStone);
         }
-        else if (playerStone.leftSide === this.gameArea[this.gameArea.length - 1].rightSide) {
+        else if (playerStone.getLeftSide() === this.gameArea[this.gameArea.length - 1].getRightSide()) {
             this.gameArea.push(playerStone);
         }
         else {
@@ -54,13 +54,6 @@ export class Round {
     play() {
         while (this.hasRoundEndet() == false) {
             this.players.forEach(player => {
-                console.table(this.gameArea);
-                console.log("======================================");
-                console.table(this.players[0].playerDeck);
-                console.table(this.players[1].playerDeck);
-                console.table(this.players[2].playerDeck);
-                console.table(this.players[3].playerDeck);
-                console.log("======================================");
                 const playerStone = player.dropStone();
                 if (player.steinPruefen(playerStone) == true) {
                     this.pushStoneToGameArea(playerStone);
@@ -73,3 +66,4 @@ export class Round {
         });
     }
 }
+Round.gameArea = [];

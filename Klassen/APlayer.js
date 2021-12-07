@@ -16,10 +16,10 @@ export class APlayer {
         return this.playerDeck.length === 0;
     }
     steinPruefen(playerStone) {
-        if (playerStone.rightSide === Round.gameArea[0].leftSide) {
+        if (playerStone.getRightSide() === Round.gameArea[0].getLeftSide()) {
             return true;
         }
-        else if (playerStone.leftSide === Round.gameArea[Round.gameArea.length - 1].rightSide) {
+        else if (playerStone.getLeftSide() === Round.gameArea[Round.gameArea.length - 1].getRightSide()) {
             return true;
         }
         else {
@@ -32,12 +32,5 @@ export class APlayer {
         let stone = this.playerDeck.push();
         return this.stone;
     }
-    addPoints() {
-        let roundPoint = 0;
-        for (let i = 0; i < this.playerDeck.length; i++) {
-            const stonepoints = this.playerDeck[i].leftSide + this.playerDeck[i].rightSide;
-            roundPoint += stonepoints;
-        }
-        return this.points += roundPoint;
-    }
+    addPoints() { return 0; }
 }

@@ -1,9 +1,10 @@
+import { Stone } from "./stone";
 export class Pool {
     constructor() {
         this.pool = [];
         for (let leftSide = 0; leftSide <= 4; leftSide++) {
             for (let rightSide = 0; rightSide <= 4; rightSide++) {
-                const stone = { leftSide: leftSide, rightSide: rightSide };
+                const stone = new Stone(leftSide, rightSide);
                 this.pool.push(stone);
             }
         }
@@ -26,16 +27,10 @@ export class Pool {
         this.pool.splice(stone, 1);
         return gameArea;
     }
-    playerGetStone(stone) {
-        this.player.playerDeck.push(this.pool[stone]);
-        this.pool.splice(stone, 1);
-        return this.player.playerDeck;
-    }
-    getStonePoints() {
-        this.pool.forEach(stone => {
-            const points = stone.leftSide + stone.rightSide;
-            const stonePoint = console.log(points);
-            return stonePoint;
-        });
+    getPlayerStone() {
+        return this.pool.pop();
     }
 }
+
+
+
